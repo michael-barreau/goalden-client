@@ -14,14 +14,17 @@ export const GoalForm = () => {
     const [currentGoal, setCurrentGoal] = useState({
         title: "",
         description: "",
-        type: 0,
+        typeId: 0,
+        createdBy: localStorage.getItem("user")
         // checkInFrequency: ""
     })
     
+    // console.log(localStorage.getItem("user"))
     useEffect(() => {
         getGoalTypes().then(res=>setGoalTypes(res))
     }, []);
     console.log(goalTypes)
+
 
     // useEffect(()=>{
     //     if(goalId){
@@ -78,7 +81,8 @@ export const GoalForm = () => {
         const goal = {
             title: currentGoal.title,
             description: currentGoal.description,
-            type: (currentGoal.type)
+            type: (currentGoal.type),
+            createdBy: (currentGoal.createdBy)
         }
 
     createGoal(goal)
@@ -111,15 +115,16 @@ export const GoalForm = () => {
                 <div className="form-group">
                     <label htmlFor="goalType">Goal Type: </label>
                     <select 
+                        type="text"
                         className="form-control"
                         name="title" 
                         id="type"
                         required 
-                        value={goalTypes.id}
+                        value={goalTypes.title}
                         onChange={changeGoalState} >
                         <option value="0">Please select ...</option>
                             {goalTypes.map(goalType => (
-                            <option key={goalType.id} value={goalType.id}>{goalType.label}</option>)
+                            <option key={goalType.id} value={goalType.id}>{goalType.title}</option>)
                             )}
                     </select> 
         
@@ -150,8 +155,7 @@ export const GoalForm = () => {
                         title: currentGoal.title,
                         description: currentGoal.description,
                         type: (currentGoal.type),
-                        check_in_frequency: (currentGoal.checkInFrequency)
-                    }
+                        createdBy: (currentGoal.createdBy)  }
 
                     // Send POST request to your API
                     createGoal(goal)

@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom"
 import "./GoalCard.css"
 
-export const GoalCard = ({ goal, delGame}) => {
+export const GoalCard = ({ goal, delGoal}) => {
 
     const history = useHistory();
 
@@ -11,7 +11,6 @@ export const GoalCard = ({ goal, delGame}) => {
     <div className="goal__title">{goal.title}</div>
     <div className="goal__description">{goal.description}</div>
     <div className="goal__type">{goal.type}</div>
-    <div className="goal__check_in_frequency">{goal.check_in_frequency}</div>
 
     <div className="buttons">
         <Link to={`goal/${goal.id}/update`}><button className="cardBtn">Edit</button> </Link>

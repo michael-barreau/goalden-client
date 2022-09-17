@@ -19,7 +19,7 @@ export const GoalList = () => {
                         <div className="goal__title">Goal: {goal.title}</div>
                         <div className="goal__description">Description:{goal.description}</div>
                         <div className="goal__type">Type: {goal.type}</div>
-                        <div className="goal__check_in_frequency">Check In: {goal.check_in_frequency}</div>
+                        {/* <div className="goal__check_in_frequency">Check In: {goal.check_in_frequency}</div> */}
 
 
                         <div className="goal__creator">Created By: {goal.user}</div>
