@@ -47,7 +47,7 @@ export const getCompletedGoals = (user, goal) => {
 }
 
 export const createGoal = (goal) => {
-    return fetch(`${remoteURL}/goals/new`, {
+    return fetch(`${remoteURL}/goals`, {
         method: "POST",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -55,7 +55,7 @@ export const createGoal = (goal) => {
         },
         body: JSON.stringify(goal)
     })
-        .then(response => response.json(goal))
+        
 }
 
 export const deleteGoal = (id) => {
@@ -78,7 +78,7 @@ export const updateGoal = (goal, id) => {
     })
 }
 
-export const getGoalsByBuddy = (bu) => {
+export const getGoalsByBuddy = (buddy) => {
     return fetch(`${remoteURL}/buddy_goals`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
@@ -86,4 +86,14 @@ export const getGoalsByBuddy = (bu) => {
     })
         .then(response => response.json())
 }
+
+export const getUserByGoal = (buddy) => {
+    return fetch(`${remoteURL}/all_goals`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("token")}`
+        }
+    })
+        .then(response => response.json())
+}
+
 

@@ -10,7 +10,6 @@ export const GoalDetails = () => {
         title: "",
         description: "",
         type: "",
-        check_in_frequency: ""
     })
 
     const loadGoal = () => {
@@ -31,7 +30,6 @@ export const GoalDetails = () => {
         <h2>Title:{goalDetail.title}</h2>
         <p>Description: {goalDetail.description}</p>
         <p>Type: {goalDetail.type}</p>
-        <p>Check_in_frequency: {goalDetail.check_in_frequency}</p> 
         </section>
         </> 
     )
