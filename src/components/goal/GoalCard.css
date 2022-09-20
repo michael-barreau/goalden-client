@@ -1,0 +1,43 @@
+h2,
+.goal__title,
+.goal_type 
+.goal__description {
+    text-align: center;
+}
+.goal {
+    background-color: lightsteelblue;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    box-shadow: 5px 5px 10px black;
+}
+
+#createGoalBtn {
+    background-color: steelblue;
+    border-radius: 10px;
+    /* box-shadow: 0px 0px 10px gray; */
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    color: white;
+    text-align: left;
+    width: 420px;
+    text-align: center;
+    margin-bottom: 50px auto;
+
+}
+
+#createEventBtn:hover {
+    background-color: lightgray;
+    border-radius: 10px;
+    /* box-shadow: 0px 0px 10px black; */
+    color: steelblue;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
