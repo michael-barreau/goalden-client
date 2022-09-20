@@ -7,13 +7,14 @@ export const UpdateGoalForm = () => {
     const [goalTypes, setGoalTypes] = useState([])
     const[goal, setGoal] = useState([])
       
-    // const editMode = goalId ? true : false
 
     const [currentGoal, setCurrentGoal] = useState({
         title: "",
         description: "",
         type: 0
     })
+
+    const {goalId} = useParams()
     const [isLoading, setIsLoading] = useState(false);
 
     // console.log(localStorage.getItem("user"))
@@ -22,48 +23,6 @@ export const UpdateGoalForm = () => {
     }, []);
     console.log(goalTypes)
 
-
-    // useEffect(()=>{
-    //     if(goalId){
-    //         getGoalTypes(parseInt(goalId)).then(res => setCurrentGoal(res))
-    //     }
-    //     },[goalId]);
-
-    // const handleControlledInputChange = (event) => {
-        
-    //     const newGoal = Object.assign({}, goal)          // Create copy
-    //     newGoal[event.target.name] = event.target.value    // Modify copy
-    //     setGoal(newGoal)                                 // Set copy as new state
-    // }
-
-    // useEffect(() => {
-    //     if (editMode) {
-    //         getGoalById(goalId).then((res) => {
-    //             setGoal(res)})
-    //     }}, [])
-
-    // const constructNewGoal = () => {
-    //         const goal_id = parseInt(goal.location_id)
-    //         {
-    //             if (editMode) {
-    //                 // PUT
-    //                 updateGoal({
-    //                     title: goal.id,
-    //                     description:goal.description,
-    //                     type: goal.type
-    //                 })
-    //                     .then(() => history.push("/my_goals"))
-    //             } else {
-    //                 // POST
-    //                 addGoal({
-    //                     title: goal.id,
-    //                     description:goal.description,
-    //                     type: goal.type    //                 })
-    //                     .then(() => history.push("/my_goals"))
-    //             }
-    //         }
-    //     }
-    
         const handleFieldChange = (goal) => {
 		const stateToChange = { ...goal }
         stateToChange[goal.target.id] = goal.target.value
@@ -75,15 +34,14 @@ export const UpdateGoalForm = () => {
             setIsLoading(true);
         
             const editedGoal = {
+                    id: goalId,
                     title: currentGoal.title,
                     description: currentGoal.description,
                     type: parseInt(currentGoal.type)
                 }
             
-        
-            updateGoal(editedGoal)
-              .then(() => history.push("/all_goals")
-              )
+            updateGoal(editedGoal.id, editedGoal).then(() =>
+      history.push("/"))
           }
         
           useEffect(() => {
@@ -145,16 +103,16 @@ export const UpdateGoalForm = () => {
                             {goalTypes.map(goalType => (
                             <option key={goalType.id} value={goalType.id}>{goalType.title}</option>)
                             )}
-                    </select> 
-        
+                    </select>    
                 </div>
-
             </fieldset>
 
             <button 
                 type="submit"
+                disabled={isLoading}
                 onClick={updateExistingGoal}
-                className="btn btn-submit-edit">Submit Goal</button>
+                className="btn btn-submit-edit">Submit Goal
+            </button>
         </form>
     )}
             

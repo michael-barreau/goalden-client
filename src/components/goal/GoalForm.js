@@ -84,7 +84,6 @@ export const GoalForm = () => {
 
     createGoal(goal)
         .then(()=> history.push("/allgoals"))
-        .then(()=> history.push("/mygoals"))
     }
     
     return (

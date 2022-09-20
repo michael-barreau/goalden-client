@@ -9,9 +9,9 @@ export const NavBar = () => {
             {
                 (localStorage.getItem("token") !== null) ?
                 <>
-            <li className="navbar__item active">
+            {/* <li className="navbar__item active">
                 <Link className="navbar__link" to="/">Home</Link>
-            </li>
+            </li> */}
             <li className="navbar__item">
                 <Link className="navbar__link" to="/goal/new">New Goal</Link>
             </li>

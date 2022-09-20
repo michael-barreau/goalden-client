@@ -2,7 +2,7 @@ import React from "react"
 import { Route, BrowserRouter } from "react-router-dom"
 // import { Login } from "./components/auth/Login"
 // import { Register } from "./components/auth/Register"
-import {Home} from "./Home.js"
+// import {Home} from "./Home.js"
 import { GoalForm } from './components/goal/GoalForm.js'
 import { UpdateGoalForm } from "./components/goal/UpdateGoalForm.js"
 import { GoalList } from "./components/goal/GoalList.js"
@@ -17,7 +17,7 @@ export const ApplicationViews = ({ token,setToken, user ,setUser }) => {
           lineHeight: "1.75rem",
         }}>
         <BrowserRouter>
-        <Route exact path="/" component={Home} />   
+        {/* <Route exact path="/" component={Home} />    */}
         <Route exact path="/goal/new" component={GoalForm} /> 
         <Route path="/goals/edit/:goalId(\d+)" component={UpdateGoalForm}/>
         <Route exact path="/allgoals" component={GoalList}/>

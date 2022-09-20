@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { getGoals, deleteGoal } from "./GoalManager.js"
+import { getGoals, deleteGoal, updateGoal } from "./GoalManager.js"
 import { useHistory } from 'react-router-dom'
 import {GoalCard} from "./GoalCard"
 
@@ -24,7 +24,8 @@ export const GoalList = () => {
                 <GoalCard
                 key={goal.id}
                 goal={goal}
-                deleteGoal={deleteGoal} /> 
+                deleteGoal={deleteGoal}
+                updateGoal={updateGoal} /> 
             )}   
         </article>
         </div> 

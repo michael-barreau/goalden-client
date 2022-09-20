@@ -1,17 +1,24 @@
-import React, {useState}from "react";
-import { Link, useHistory } from "react-router-dom"
-import {  getGoals, deleteGoal } from "./GoalManager";
+import React, {useState} from "react";
+import { useHistory, useParams } from "react-router-dom"
+import {  updateGoal, deleteGoal } from "./GoalManager";
 import "./GoalCard.css"
 
+export const GoalCard = ({ goal}) => {
 
-export const GoalCard = () => {
+    const history = useHistory()
+    const params = useParams()
+    
+    const [goalId, setGoalId] = useState(parseInt(params.goalId))
+    
+    const handleDeleteGoal = (goalId) => {
+        deleteGoal(goalId)
+            .then(() => history.push("/allgoals"))
+    }
 
-    const history = useHistory();
-    const [goal, setGoal] = useState([]);
-
-    const handleDeleteGoal = (id) => {
-        deleteGoal(id).then(() => getGoals().then(setGoal));
-      };
+    const handleUpdateGoal = (goalId) => {
+        updateGoal(goalId)
+            .then(() => history.push("/goals/edit/:goalId(\d+)"))
+    }
 
     return (
         <section key={`goal--${goal.id}`} className="goal">
@@ -20,13 +27,29 @@ export const GoalCard = () => {
           <div className="goal__type">Type: {goal.type.title}</div>
          <div className="goal__creator">Created By:{goal.created_by.member.username}</div>
         <div className="buttons">
-        <Link to={`/goals/edit/:goalId(\d+)`}><button className="cardBtn">Edit</button></Link>
+        {/* <Link to={`/goals/edit/:goalId(\d+)`}><button className="cardBtn">Edit</button></Link> */}
+        
+        
+            <button
+                className="cardBtn"
+                onClick={() => {
+                handleUpdateGoal(goal.id)}}>
+                Edit
+            </button>
+          
         <button 
             className="cardBtn"
             onClick={() => {
             handleDeleteGoal(goal.id)}}>
             Delete
         </button>
+
+        {/* <button 
+            className="cardBtn"
+            onClick={() => {
+            (goal.id)}}>
+            Track
+        </button> */}
     </div>
     </section>
     
