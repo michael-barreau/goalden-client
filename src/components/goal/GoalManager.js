@@ -28,14 +28,14 @@ export const getGoalTypes = () => {
         .then(response => response.json())
 }
 
-export const getGoalsByUser = (userId) => {
-    return fetch(`${remoteURL}/my_goals`, {
-        headers: {
-            "Authorization": `Token ${localStorage.getItem("token")}`
-        }
-    })
-        .then(response => response.json())
-}
+// export const getGoalsByUser = (userId) => {
+//     return fetch(`${remoteURL}/my_goals`, {
+//         headers: {
+//             "Authorization": `Token ${localStorage.getItem("token")}`
+//         }
+//     })
+//         .then(response => response.json())
+// }
 
 export const getCompletedGoals = (user, goal) => {
     return fetch(`${remoteURL}/completed_goal`, {

@@ -14,9 +14,7 @@ export const GoalForm = () => {
     const [currentGoal, setCurrentGoal] = useState({
         title: "",
         description: "",
-        typeId: 0,
-        createdBy: localStorage.getItem("user")
-        // checkInFrequency: ""
+        type: 0
     })
     
     // console.log(localStorage.getItem("user"))
@@ -81,13 +79,12 @@ export const GoalForm = () => {
         const goal = {
             title: currentGoal.title,
             description: currentGoal.description,
-            type: (currentGoal.type),
-            createdBy: (currentGoal.createdBy)
+            type: parseInt(currentGoal.type)
         }
 
     createGoal(goal)
-        .then(()=> history.push("/all_goals"))
-        .then(()=> history.push("/my_goals"))
+        .then(()=> history.push("/allgoals"))
+        .then(()=> history.push("/mygoals"))
     }
     
     return (
@@ -117,7 +114,7 @@ export const GoalForm = () => {
                     <select 
                         type="text"
                         className="form-control"
-                        name="title" 
+                        name="type" 
                         id="type"
                         required 
                         value={goalTypes.title}
@@ -129,21 +126,7 @@ export const GoalForm = () => {
                     </select> 
         
                 </div>
-                {/* { <div className="form-group">
-                    <label htmlFor="check_in_frequency"> Select A Check In Frequency (Daily, Weekly, Monthly, Quarterly, Yearly): </label>
-                    <select 
-                        className="form-control"
-                        name="Check In Frequency" 
-                        id="checkInFrequencyId"
-                        required 
-                        value={currentGoal.checkInFrequency}
-                        onChange={changeGoalState} >
-                        <option value="Daily">Please select ...</option>
-                            {goalTypes.map(
-                                goalType => (<option key={goalType.id} value={goalType.id}>{goalType.label}</option>)
-                            )}
-                    </select>   
-                </div> } */}
+
             </fieldset>
 
             <button type="submit"
@@ -155,11 +138,11 @@ export const GoalForm = () => {
                         title: currentGoal.title,
                         description: currentGoal.description,
                         type: (currentGoal.type),
-                        createdBy: (currentGoal.createdBy)  }
+                         }
 
                     // Send POST request to your API
                     createGoal(goal)
-                        .then(() => history.push("/all_goals"))
+                        .then(() => history.push("/allgoals"))
                 }}
                 className="btn btn-primary">Create Goal</button>
         </form>

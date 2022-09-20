@@ -27,7 +27,7 @@ export const Register = ({setToken}) => {
         email: email.current.value,
         password: password.current.value,
         // bio: bio.current.value,
-        // phoneNumber: phoneNumber.current.value
+        phone_number: phoneNumber.current.value
       }
 
       registerUser(newUser)
@@ -92,19 +92,19 @@ export const Register = ({setToken}) => {
           </div>
         </div>
 
-        {/* <div className="field">
+        {/* { <div className="field">
           <label className="label">Bio</label>
           <div className="control">
             <textarea className="textarea" placeholder="Tell us about yourself..." ref={bio}></textarea>
           </div>
-        </div>
+        </div> */}
 
         <div className="field">
           <label className="label">Phone Number </label>
           <div className="control">
             <textarea className="input" type="text" placeholder="Enter Phone Number" ref={phoneNumber}></textarea>
           </div>
-        </div>  */}
+        </div>  
 
         <div className="field is-grouped">
           <div className="control">

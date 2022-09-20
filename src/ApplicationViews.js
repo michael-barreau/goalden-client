@@ -1,35 +1,29 @@
 import React from "react"
-import { Route, BrowserRouter, HashRouter as Router } from "react-router-dom"
+import { Route, BrowserRouter } from "react-router-dom"
 // import { Login } from "./components/auth/Login"
 // import { Register } from "./components/auth/Register"
 import {Home} from "./Home.js"
 import { GoalForm } from './components/goal/GoalForm.js'
+import { UpdateGoalForm } from "./components/goal/UpdateGoalForm.js"
 import { GoalList } from "./components/goal/GoalList.js"
+import { MyGoalList } from "./components/my_goal/MyGoal.js"
 
 export const ApplicationViews = ({ token,setToken, user ,setUser }) => {
     
-    // const PrivateRoute = ({ children }) => {
-    //     return  token? children : <Link to="/login" />;
-    // }
-    //     return( 
-    //     <>
-    //         <BrowserRouter>
-    //         <Route exact path="/" element={<Home/>} />
-    //         {/* <Route exact path="/login" element={<Login setToken={setToken} setUser={setUser}/>} />
-    //         <Route exact path="/register" element={Register} />
-    //         <Route exact path="/new_goal" element={<NewGoalForm />} /> */}
-    //         </BrowserRouter>            
-    //     </>
-    // )
     return (
         <>
+        <main style={{
+          margin: "5rem 2rem",
+          lineHeight: "1.75rem",
+        }}>
         <BrowserRouter>
         <Route exact path="/" component={Home} />   
         <Route exact path="/goal/new" component={GoalForm} /> 
-        <Route path="/goals/edit/:goalId(\d+)" component={GoalForm}/>
-        <Route exact path="/all_goals" component={GoalList}/>
-        {/* <Route path="/my_goals" component={MyGoals} />  */}
+        <Route path="/goals/edit/:goalId(\d+)" component={UpdateGoalForm}/>
+        <Route exact path="/allgoals" component={GoalList}/>
+        <Route exact path="/mygoals" component={MyGoalList} /> 
         </BrowserRouter>
+        </main>
         </>
     )
 }

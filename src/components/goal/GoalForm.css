@@ -1,13 +1,38 @@
+h2 {
+    text-align: center;
+}
 
-.goals {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .goal {
-      flex-basis: 28%;
-      margin: 1em;
-      padding: 1em;
-      border: 1px solid goldenrod;
-  }
+label {
+    font-weight: bold;
+}
+
+span {
+    font-size: .75rem;
+}
+
+.goalForm {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#createBtn {
+    background-color: steelblue;
+    border-radius: 10px;
+    /* box-shadow: 0px 0px 10px gray; */
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    color: white;
+}
+
+#createBtn:hover {
+    background-color: lightsteelblue;
+    border-radius: 10px;
+    /* box-shadow: 0px 0px 10px black; */
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
