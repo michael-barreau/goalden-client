@@ -4,7 +4,7 @@ import { deleteGoal } from "../goal/GoalManager.js"
 import { useHistory, Link } from 'react-router-dom'
 
 
-export const MyGoalCard = ({goal}) => {
+export const BuddyGoalCard = ({goal}) => {
     const history = useHistory()
     // const [ goalUsers, setGoalUsers ] = useState([]);
     // const [goal, setGoals] =useState ({})
@@ -32,8 +32,7 @@ export const MyGoalCard = ({goal}) => {
         <div className="goal__description">Description:{goal.description}</div>
          <div className="goal__type">Type: {goal.type.title}</div> 
          <div className="goal__creator">Created By: {goal.created_by.member.username}</div> 
-         <Link to={`/goals/${goal.id}/edit`}><button className="cardBtn">Edit</button></Link>
-         <button className="cardBtn"onClick={() => {handleDeleteGoal(goal.id)}}>Delete</button>
+         <button className="cardBtn"onClick={() => {handleDeleteGoal(goal.id)}}>Untrack</button>
         </div>
     </section>
         </>

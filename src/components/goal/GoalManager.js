@@ -78,13 +78,15 @@ export const updateGoal = (goal, id) => {
     })
 }
 
-export const getGoalsByBuddy = (buddy) => {
-    return fetch(`${remoteURL}/buddygoals`, {
+export const createGoalBuddy = () => {
+    return fetch(`${remoteURL}/goalbuddies`, {
+        method: "POST",
         headers: {
-            "Authorization": `Token ${localStorage.getItem("token")}`
-        }
+            "Authorization": `Token ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify()
     })
-        .then(response => response.json())
 }
 
 export const getUserByGoal = (id) => {
