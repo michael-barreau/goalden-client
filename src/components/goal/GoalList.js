@@ -33,12 +33,3 @@ export const GoalList = () => {
         
     )
 }
-                    // <section key={`goal--${goal.id}`} className="goal">
-                    //     <div className="goal__title">Goal: {goal.title}</div>
-                    //     <div className="goal__description">Description: {goal.description}</div>
-                    //     <div className="goal__type">Type: {goal.type.title}</div>
-                    //     <div className="goal__creator">Created By: {goal.created_by.member.username}</div>
-                    //     <button className= "goal_track_button" onClick={()=>{history.push(`/my_goals`)}}> Track Goal</button>
-                    //     <button className= "goal_delete_button" onClick={()=>{deleteGoal(goal.id)}}> Delete</button>
-
-                    // </section>

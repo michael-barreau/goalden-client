@@ -20,13 +20,16 @@ export const UpdateGoalForm = () => {
     // console.log(localStorage.getItem("user"))
     useEffect(() => {
         getGoalTypes().then(res=>setGoalTypes(res))
+        getGoalById(goalId).then(res=>setCurrentGoal(res))
     }, []);
     console.log(goalTypes)
 
-        const handleFieldChange = (goal) => {
-		const stateToChange = { ...goal }
-        stateToChange[goal.target.id] = goal.target.value
-		setGoal(stateToChange)
+
+    const handleFieldChange = (event) => {
+        event.preventDefault()
+		const stateToChange = { ...currentGoal }
+        stateToChange[event.target.id] = event.target.value
+		setCurrentGoal(stateToChange)
 	}
 
         const updateExistingGoal = goal => {
@@ -40,7 +43,7 @@ export const UpdateGoalForm = () => {
                     type: parseInt(currentGoal.type)
                 }
             
-            updateGoal(editedGoal.id, editedGoal).then(() =>
+            updateGoal(editedGoal, editedGoal.id).then(() =>
       history.push("/"))
           }
         
