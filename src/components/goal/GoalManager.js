@@ -96,4 +96,10 @@ export const getUserByGoal = (id) => {
         .then(response => response.json())
 }
 
-
+export const getGoalsByUserId = () => {
+    return fetch(`${remoteURL}/goals?member_id=${localStorage.getItem("user")}`,{
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("token")}`
+        }
+    }) .then(response => response.json())
+}

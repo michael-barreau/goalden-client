@@ -1,0 +1,18 @@
+h2,
+.goal__title,
+.goal_type 
+.goal__description {
+    text-align: center;
+}
+.goal {
+    background-color: lightsteelblue;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    box-shadow: 5px 5px 10px black;
+}
+

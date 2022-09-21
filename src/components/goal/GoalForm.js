@@ -17,7 +17,7 @@ export const GoalForm = () => {
         type: 0
     })
     
-    // console.log(localStorage.getItem("user"))
+    console.log(localStorage.getItem("user"))
     useEffect(() => {
         getGoalTypes().then(res=>setGoalTypes(res))
     }, []);

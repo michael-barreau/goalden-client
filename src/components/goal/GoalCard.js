@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import { useHistory, useParams } from "react-router-dom"
-import {  updateGoal, deleteGoal } from "./GoalManager";
+import { useHistory, useParams, Link } from "react-router-dom"
+import {  updateGoal, deleteGoal, getGoals } from "./GoalManager";
 import "./GoalCard.css"
 
 export const GoalCard = ({ goal}) => {
@@ -10,16 +10,10 @@ export const GoalCard = ({ goal}) => {
     
     const [goalId, setGoalId] = useState(parseInt(params.goalId))
     
-    const handleDeleteGoal = (goalId) => {
-        deleteGoal(goalId)
-            .then(() => history.push("/allgoals"))
+    const handleDeleteGoal = () => {
+        deleteGoal()
+            .then(() => getGoals().then(setGoalId));
     }
-
-    const handleUpdateGoal = (goalId) => {
-        updateGoal(goalId)
-            .then(() => history.push("/goals/edit/:goalId(\d+)"))
-    }
-
     return (
         <section key={`goal--${goal.id}`} className="goal">
          <div className="goal__title">Goal:  {goal.title}</div>
@@ -27,15 +21,15 @@ export const GoalCard = ({ goal}) => {
           <div className="goal__type">Type: {goal.type.title}</div>
          <div className="goal__creator">Created By:{goal.created_by.member.username}</div>
         <div className="buttons">
-        {/* <Link to={`/goals/edit/:goalId(\d+)`}><button className="cardBtn">Edit</button></Link> */}
+        <Link to={`/goals/${goal.id}/edit`}><button className="cardBtn">Edit</button></Link>
         
         
-            <button
+            {/* <button
                 className="cardBtn"
                 onClick={() => {
-                handleUpdateGoal(goal.id)}}>
+                history.push(`goals/edit/id`)}}>
                 Edit
-            </button>
+            </button> */}
           
         <button 
             className="cardBtn"
