@@ -4,35 +4,17 @@ import { deleteGoal } from "../goal/GoalManager.js"
 import { useHistory, Link } from 'react-router-dom'
 
 
-export const BuddyGoalCard = ({goal}) => {
-    const history = useHistory()
-    // const [ goalUsers, setGoalUsers ] = useState([]);
-    // const [goal, setGoals] =useState ({})
-    const [GoalByUserId, setGoalByUserId] = useState([])
-    
-    const handleDeleteGoal = (goalId) => {
-        deleteGoal(goalId)
-            .then(() => history.push("/allgoals"))
-    }
-
-    useEffect(() => {
-        getGoalsByUserId().then(data => setGoalByUserId(data))
-        console.log(goal)
-    }, [])
-
-    // useEffect(() => {
-    //     getGoals().then(data => setGoals(data))
-    // }, [])
+export const BuddyGoalCard = ({buddyGoal, deleteBuddyGoal}) => {
     
     return(
         <>
-        <section key={`goal--${goal.id}`} className="goal">
+        <section key={`goal--${buddyGoal.id}`} className="goal">
         <div className="goals">
-        <div className="goal__title">Goal: {goal.title}</div>
-        <div className="goal__description">Description:{goal.description}</div>
-         <div className="goal__type">Type: {goal.type.title}</div> 
-         <div className="goal__creator">Created By: {goal.created_by.member.username}</div> 
-         <button className="cardBtn"onClick={() => {handleDeleteGoal(goal.id)}}>Untrack</button>
+        <div className="goal__title">Goal: {buddyGoal.goal.title}</div>
+        <div className="goal__description">Description:{buddyGoal.goal.description}</div>
+         <div className="goal__phone_number">Phone Number: {buddyGoal.member.phone_number}</div> 
+         <div className="goal__creator">Created By: {buddyGoal.member.member.username}</div> 
+         <button className="cardBtn"onClick={() => {deleteBuddyGoal(buddyGoal.id)}}>Untrack</button>
         </div>
     </section>
         </>

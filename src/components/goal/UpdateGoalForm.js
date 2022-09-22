@@ -32,8 +32,8 @@ export const UpdateGoalForm = () => {
 		setCurrentGoal(stateToChange)
 	}
 
-        const updateExistingGoal = goal => {
-            goal.preventDefault()
+        const updateExistingGoal = event => {
+            event.preventDefault()
             setIsLoading(true);
         
             const editedGoal = {
@@ -44,7 +44,7 @@ export const UpdateGoalForm = () => {
                 }
             
             updateGoal(editedGoal, editedGoal.id).then(() =>
-      history.push("/"))
+            history.push("/mygoals"))
           }
         
           useEffect(() => {

@@ -12,7 +12,7 @@ export const MyGoalCard = ({goal}) => {
     
     const handleDeleteGoal = (goalId) => {
         deleteGoal(goalId)
-            .then(() => history.push("/allgoals"))
+            .then(() => history.push("/mygoals"))
     }
 
     useEffect(() => {

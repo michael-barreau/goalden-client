@@ -22,7 +22,7 @@ export const NavBar = () => {
                 <Link className="navbar__link" to="/completedgoals">Completed Goals</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/allgoals">All Goals</Link>
+                <Link className="navbar__link" to="/allgoals">Goals To Track</Link>
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to="/buddygoals">Buddy Goals</Link>

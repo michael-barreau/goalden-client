@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom"
 import { registerUser } from "./AuthManager"
 import "./Auth.css"
 
-export const Register = ({setToken}) => {
+export const Register = () => {
   const firstName = useRef()
   const lastName = useRef()
   const email = useRef()
@@ -33,7 +33,8 @@ export const Register = ({setToken}) => {
       registerUser(newUser)
         .then(res => {
           if ("valid" in res && res.valid) {
-            setToken(res.token)
+            localStorage.setItem("token",res.token)
+            localStorage.setItem("user",res.userId)
             history.push("/")
           }
         })
@@ -111,7 +112,7 @@ export const Register = ({setToken}) => {
             <button className="button is-link" type="submit">Submit</button>
           </div>
           <div className="control">
-            <Link to="/login" className="button is-link is-light">Cancel</Link>
+            <Link to="/login" className="button is-link is-light">Login</Link>
           </div>
         </div>
 

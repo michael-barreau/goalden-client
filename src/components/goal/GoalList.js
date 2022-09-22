@@ -11,7 +11,7 @@ export const GoalList = () => {
         getGoals().then(data => setGoals(data))
     }, [])
 
-    const deleteGoal = (id) => {
+    const handleDeleteGoal = (id) => {
         deleteGoal(id)
             .then(() => getGoals().then(setGoals));
     }
@@ -24,7 +24,7 @@ export const GoalList = () => {
                 <GoalCard
                 key={goal.id}
                 goal={goal}
-                deleteGoal={deleteGoal}
+                handleDeleteGoal={handleDeleteGoal}
                 updateGoal={updateGoal} /> 
             )}   
         </article>

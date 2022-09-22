@@ -2,44 +2,44 @@ import {React, useState} from "react"
 // import { BrowserRouter } from "react-router-dom";
 import { NavBar } from "./nav/NavBar"
 import { ApplicationViews } from "../ApplicationViews"
-import { Route, Link} from 'react-router-dom';
+import { Route, Link, Redirect} from 'react-router-dom';
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 
 export const Goalden = () => {
-    const [token, setTokenState] = useState(localStorage.getItem('token'))
-    const [user, setUserState] = useState(localStorage.getItem('user'))
+    // const [token, setTokenState] = useState(localStorage.getItem('token'))
+    // const [user, setUserState] = useState(localStorage.getItem('user'))
 
-    const setToken = (newToken) => {
-        localStorage.setItem('token', newToken)
-        setTokenState(newToken)
-      }
+    // const setToken = (newToken) => {
+    //     localStorage.setItem('token', newToken)
+    //     setTokenState(newToken)
+    //   }
     
-      const setUser= (user) => {
-        localStorage.setItem('user', user)
-        setUserState(user)
-      }
+    //   const setUser= (user) => {
+    //     localStorage.setItem('user', user)
+    //     setUserState(user)
+    //   }
     return (
     <>
         {/* <BrowserRouter> */}
             <Route render={() => {
-                if (token) {
+                if (localStorage.getItem("token")) {
                     return <>
                         <Route>
 
-                            <NavBar token={token} setToken={setToken} setUser={setUser}  />
-                            <ApplicationViews token={token} setToken={setToken} user={user} setUser={setUser}/>
+                            <NavBar />
+                            <ApplicationViews/>
 
                         </Route>
                     </>
                 } else {
-                    return <Link to="/login" />
+                    return <Redirect to="/login" />
 
 
                 }
             }} />
 
-            <Route path="/login"> <Login token={token} setToken={setToken} setUser={setUser} /> </Route>
+            <Route path="/login"> <Login  /> </Route>
             <Route path="/register"> <Register /> </Route>
     </>
   );

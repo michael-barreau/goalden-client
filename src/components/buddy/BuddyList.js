@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react"
-import { getGoals, deleteGoal } from "../goal/GoalManager.js"
+import { getGoals, deleteBuddyGoal, getBuddyGoals } from "../goal/GoalManager.js"
 import {BuddyGoalCard} from "./BuddyGoalCard"
 
 export const BuddyGoalList = () => {
-    const [ goals, setGoals ] = useState([]);
+    const [ buddyGoals, setBuddyGoals ] = useState([]);
 
     useEffect(() => {
-        getGoals().then(data => setGoals(data))
+        getBuddyGoals().then(data => setBuddyGoals(data))
     }, [])
 
-    const deleteGoal = (id) => {
-        deleteGoal(id)
-            .then(() => getGoals().then(setGoals));
+    const handleDeleteBuddyGoal = (id) => {
+        deleteBuddyGoal(id)
+            .then(() => getBuddyGoals().then(setBuddyGoals));
     }
 
     return (
         <>
         <div>
         <article className="goals">
-            {goals.map(goal=> 
+            {buddyGoals.map(bg=> 
                 <BuddyGoalCard
-                key={goal.id}
-                goal={goal}
-                deleteGoal={deleteGoal}
+                key={bg.id}
+                buddyGoal={bg}
+                deleteBuddyGoal={handleDeleteBuddyGoal}
                /> 
             )}   
         </article>
