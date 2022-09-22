@@ -18,8 +18,8 @@ export const Login = ({ setToken, setUser }) => {
 
     loginUser(user).then(res => {
       if ("valid" in res && res.valid) {
-        setToken(res.token)
-        setUser(res.userId)
+        localStorage.setItem("token",res.token)
+        localStorage.setItem("user",res.userId)
         history.push("/")
       }
       else {
@@ -53,7 +53,7 @@ export const Login = ({ setToken, setUser }) => {
             <button className="button is-link" type="submit" >Submit</button>
           </div>
           <div className="control">
-            <Link to="/register" className="button is-link is-light">Cancel</Link>
+            <Link to="/register" className="button is-link is-light">Register</Link>
           </div>
         </div>
         {

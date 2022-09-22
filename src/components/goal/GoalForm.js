@@ -83,7 +83,7 @@ export const GoalForm = () => {
         }
 
     createGoal(goal)
-        .then(()=> history.push("/allgoals"))
+        .then(()=> history.push("/mygoals"))
     }
     
     return (
@@ -141,7 +141,7 @@ export const GoalForm = () => {
 
                     // Send POST request to your API
                     createGoal(goal)
-                        .then(() => history.push("/allgoals"))
+                        .then(() => history.push("/mygoals"))
                 }}
                 className="btn btn-primary">Create Goal</button>
         </form>
